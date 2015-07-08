@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class PlaceholderFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+        // Fake Data
         String[] forecastArray = {
                 "Today - Sunny - 88/63",
                 "Tomorrow - Foggy - 70/40",
@@ -34,6 +36,13 @@ public class PlaceholderFragment extends Fragment {
                 "Sun - Sunny - 80/68"
         };
         List<String> weekForecast = new ArrayList<String>(Arrays.asList(forecastArray));
+
+        // Create Array Adapter
+        ArrayAdapter<String> mForecastAdapter = new ArrayAdapter<String>(
+                getActivity(),
+                R.layout.list_item_forecast,
+                R.id.list_item_forecast_textview,
+                weekForecast);
 
         return rootView;
     }
